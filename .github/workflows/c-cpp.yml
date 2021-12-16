@@ -1,0 +1,24 @@
+name: C
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - run: echo "🐧 Starting automatically make by a ${{ github.event_name }} event."
+    - run: echo "🔎 The name of branch is ${{ github.ref }} and repository is ${{ github.repository }}."
+    - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+    - name: List files in the repository
+      run: |
+        ls -R ${{ github.workspace }}
+    - run: echo "🍏 Status is ${{ job.status }}."
+    - name: make
+      run: make
