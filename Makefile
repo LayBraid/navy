@@ -7,13 +7,17 @@
 
 MAIN = src/main.c
 
-SRC =
+SRC = src/map/input.c \
+	  src/map/map.c \
+	  src/navy.c \
+	  src/map/utils.c \
+	  src/utils.c \
 
 TESTS = tests/test_my_strlen.c
 
 OBJ = $(MAIN:.c=.o) $(SRC:.c=.o)
 
-NAME = BLANK
+NAME = navy
 SRC_LIB = -Llib -lmy
 CFLAGS += -Wextra -Iinclude -g3
 
@@ -40,7 +44,7 @@ re:
 	make
 
 tests_run:
-	gcc $(SRC) $(TESTS_SRC) $(SRC_LIB) $(CFLAGS) -lcriterion -o./u --coverage
+	gcc $(SRC) $(TESTS) $(SRC_LIB) $(CFLAGS) -lcriterion -o./u --coverage
 	./u
 
 debug:
