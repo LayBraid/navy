@@ -20,6 +20,7 @@ typedef struct navy_game {
     map_t *map;
     char **my_map;
     char **enemy_map;
+    int enemy_pid;
 } navy_t;
 
 #endif
