@@ -17,7 +17,7 @@
 
     #include <stdio.h>
 
-extern struct navy_game *navy;
+struct navy_game *navy;
 
 int launch(int ac, char **av);
 
