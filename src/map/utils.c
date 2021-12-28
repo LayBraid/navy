@@ -18,7 +18,7 @@ void exe_vector(const int *vector, char **map)
         map[vector[1]][vector[0]] = (char) (vector[6] + '0');
 }
 
-void browse_vectors(navy_t *navy)
+void browse_vectors()
 {
     for (int i = 0; i < navy->map->buffer_lines; i++) {
         exe_vector(navy->map->vectors[i], navy->my_map);

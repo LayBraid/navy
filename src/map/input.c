@@ -7,7 +7,7 @@
 
 #include "../../include/map.h"
 
-void get_in_buffer(navy_t *navy, char *path)
+void get_in_buffer(char *path)
 {
     int fd;
     struct stat buf;
@@ -40,7 +40,7 @@ int char_in_line(char *buffer) //TODO Mettre dans la lib
     return 0;
 }
 
-void line_by_line(navy_t *navy)
+void line_by_line()
 {
     navy->map->buffer_lines = line_in_buffer(navy->map->buffer);
     navy->map->length_line = char_in_line(navy->map->buffer);
@@ -58,7 +58,7 @@ void line_by_line(navy_t *navy)
     navy->map->lines[navy->map->buffer_lines] = "\0";
 }
 
-void init_vectors(navy_t *navy)
+void init_vectors()
 {
     navy->map->vectors = malloc(sizeof(int *) * navy->map->buffer_lines);
     for (int i = 0; i < navy->map->buffer_lines; i++) {
@@ -75,11 +75,11 @@ void init_vectors(navy_t *navy)
     }
 }
 
-int input_map(navy_t *navy, char *path)
+int input_map(char *path)
 {
     navy->map = malloc(sizeof(map_t));
-    get_in_buffer(navy, path);
-    line_by_line(navy);
-    init_vectors(navy);
+    get_in_buffer(path);
+    line_by_line();
+    init_vectors();
     return (0);
 }

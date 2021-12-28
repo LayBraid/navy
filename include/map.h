@@ -14,12 +14,12 @@
     #include <sys/stat.h>
     #include <sys/fcntl.h>
 
-int input_map(navy_t *navy, char *path);
+int input_map(char *path);
 
-void fill_map(navy_t *navy, char *path);
+void fill_map(char *path);
 
 void display_map(char **map);
 
-void browse_vectors(navy_t *navy);
+void browse_vectors();
 
 #endif

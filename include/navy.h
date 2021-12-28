@@ -21,6 +21,4 @@ extern struct navy_game *navy;
 
 int launch(int ac, char **av);
 
-
-
 #endif

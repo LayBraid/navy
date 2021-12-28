@@ -31,6 +31,7 @@ void second_player()
 
 int launch(int ac, char **av)
 {
+    //TODO -h
     if (ac == 2 || ac == 3) {
         navy = malloc(sizeof(navy_t));
         navy->bool_game = 0;
@@ -38,7 +39,7 @@ int launch(int ac, char **av)
         navy->attack->attack = malloc(sizeof(int) * 2);
         handle_signal(SIGUSR1);
         handle_signal(SIGUSR2);
-        fill_map(navy, av[ac - 1]);
+        fill_map(av[ac - 1]);
         if (ac == 2) {
             first_player();
         } else {

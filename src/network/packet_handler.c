@@ -5,7 +5,7 @@
 ** No file there , just an epitech header example
 */
 
-#include "navy.h"
+#include "../../include/navy.h"
 
 void handle_packet(int type, int data)
 {

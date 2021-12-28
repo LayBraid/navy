@@ -6,10 +6,11 @@
 */
 
 #ifndef NAVY_SIGNALS_H
-#define NAVY_SIGNALS_H
+    #define NAVY_SIGNALS_H
 
-#include <signal.h>
-#include <stdlib.h>
+    #include <signal.h>
+    #include <stdlib.h>
+    #include "my.h"
 
 enum Packets {
     ConnectionAttempt,

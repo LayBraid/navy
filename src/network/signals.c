@@ -5,8 +5,7 @@
 ** No file there , just an epitech header example
 */
 
-#include "signals.h"
-#include "my.h"
+#include "../../include/signals.h"
 
 int send_signal(int signal, int pid)
 {
