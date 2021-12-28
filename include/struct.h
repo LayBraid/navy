@@ -16,11 +16,17 @@ typedef struct map_struct {
     int length_line;
 } map_t;
 
+typedef struct attack_struct {
+    int *attack;
+} attack_t;
+
 typedef struct navy_game {
     map_t *map;
     char **my_map;
     char **enemy_map;
     int enemy_pid;
+    int bool_game;
+    attack_t *attack;
 } navy_t;
 
 #endif

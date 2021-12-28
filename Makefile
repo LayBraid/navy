@@ -11,6 +11,7 @@ SRC = src/map/input.c \
 	  src/map/map.c \
 	  src/navy.c \
 	  src/map/utils.c \
+	  src/events/attack_sender.c \
 	  src/utils.c \
 
 TESTS = tests/test_my_strlen.c

@@ -12,6 +12,7 @@
     #include "struct.h"
     #include "map.h"
     #include "utils.h"
+    #include "events.h"
 
     #include <stdio.h>
     #include <stdlib.h>

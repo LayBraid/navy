@@ -9,7 +9,7 @@
 
 void display_maps(navy_t *navy)
 {
-    write(1, "my positions:\n", 14);
+    write(1, "\nmy positions:\n", 15);
     display_map(navy->my_map);
     write(1, "\nenemy's positions:\n", 20);
     display_map(navy->enemy_map);
