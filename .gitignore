@@ -2,5 +2,6 @@
 *.o
 *.out
 *.pdf
+pos1
 
 .idea/

@@ -15,7 +15,7 @@ int correct_attack(char *str)
     return 0;
 }
 
-int attack_sender(navy_t *navy)
+int attack_sender()
 {
     char *line = NULL;
     int bool = 0;

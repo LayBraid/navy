@@ -6,7 +6,7 @@
 */
 
 #ifndef NAVY_STRUCT_H
-    #define NAVY_STRUCT_H
+#define NAVY_STRUCT_H
 
 typedef struct map_struct {
     int **vectors;
@@ -29,4 +29,4 @@ typedef struct navy_game {
     attack_t *attack;
 } navy_t;
 
-#endif
+#endif //NAVY_STRUCT_H

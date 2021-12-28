@@ -13,10 +13,14 @@
     #include "map.h"
     #include "utils.h"
     #include "events.h"
+    #include "signals.h"
 
     #include <stdio.h>
-    #include <stdlib.h>
 
-int navy(int ac, char **av);
+extern struct navy_game *navy;
+
+int launch(int ac, char **av);
+
+
 
 #endif

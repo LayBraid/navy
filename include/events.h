@@ -13,6 +13,6 @@
     #define LETTERS_ATTACK "ABCDEFGH"
     #define NUMBERS_ATTACK "12345678"
 
-int attack_sender(navy_t *navy);
+int attack_sender();
 
 #endif

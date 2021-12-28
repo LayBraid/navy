@@ -10,6 +10,6 @@
 
     #include "navy.h"
 
-void display_maps(navy_t *navy);
+void display_maps();
 
 #endif

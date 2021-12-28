@@ -9,6 +9,6 @@
 
 int main(int ac, char**av)
 {
-    navy(ac, av);
+    launch(ac, av);
     return 0;
 }

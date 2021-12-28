@@ -7,7 +7,7 @@
 
 #include "../include/utils.h"
 
-void display_maps(navy_t *navy)
+void display_maps()
 {
     write(1, "\nmy positions:\n", 15);
     display_map(navy->my_map);

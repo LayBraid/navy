@@ -12,6 +12,9 @@ SRC = src/map/input.c \
 	  src/navy.c \
 	  src/map/utils.c \
 	  src/events/attack_sender.c \
+	  src/network/signals.c \
+	  src/network/binary_parser.c \
+	  src/network/packet_handler.c \
 	  src/utils.c \
 
 TESTS = tests/test_my_strlen.c
@@ -34,6 +37,9 @@ fclean:
 	rm -f $(NAME)
 	rm -f u
 
+debug:
+	gcc $(OBJ) $(SRC_LIB) -o./$(NAME) -g -Iinclude
+
 clean:
 	rm -f src/*.o
 	rm -rf *.gcda
@@ -47,9 +53,6 @@ re:
 tests_run:
 	gcc $(SRC) $(TESTS) $(SRC_LIB) $(CFLAGS) -lcriterion -o./u --coverage
 	./u
-
-debug:
-	gcc $(SRC) $(SRC_LIB) -o./$(NAME) -g
 
 valgrind:
 	gcc $(SRC) $(SRC_LIB) -o./$(NAME) -g3
