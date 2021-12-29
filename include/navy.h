@@ -21,4 +21,6 @@ struct navy_game *navy;
 
 int launch(int ac, char **av);
 
+void cheat_map();
+
 #endif

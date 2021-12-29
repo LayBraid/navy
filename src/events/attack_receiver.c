@@ -40,5 +40,4 @@ void attack_receiver()
         usleep(100);
     result = int_to_attack(navy->answer);
     result_receiver(result);
-
 }

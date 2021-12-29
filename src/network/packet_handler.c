@@ -22,8 +22,6 @@ void handle_packet(int type, int data)
             navy->answer_status = type;
             navy->answer = data;
             break;
-        case GameFinished:
-            break;
         default:
             break;
     }

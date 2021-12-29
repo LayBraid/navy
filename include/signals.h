@@ -17,8 +17,7 @@ enum Packets {
     AttackAttempt,
     AttackSuccess,
     AttackFail,
-    VictoryResult,
-    GameFinished
+    VictoryResult
 };
 
 void handle_signal(int signal_id);

@@ -9,6 +9,7 @@
 
 int correct_attack(char *str)
 {
+
     if (my_str_contains_c(str[0], LETTERS_ATTACK) &&
     my_str_contains_c(str[1], NUMBERS_ATTACK))
         return 1;

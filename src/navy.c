@@ -18,6 +18,8 @@ void first_player()
         display_maps(navy);
         attack_sender(navy);
         attack_receiver(navy);
+        victory_sender();
+        victory_receiver();
     }
 }
 
@@ -30,6 +32,8 @@ void second_player()
         display_maps(navy);
         attack_receiver(navy);
         attack_sender(navy);
+        victory_receiver();
+        victory_sender();
     }
 }
 

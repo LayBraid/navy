@@ -17,4 +17,8 @@ void attack_sender();
 
 void attack_receiver();
 
+void victory_sender();
+
+void victory_receiver();
+
 #endif
