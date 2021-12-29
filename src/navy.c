@@ -25,13 +25,28 @@ void second_player()
 {
     my_printf("my_pid: %d\n", getpid());
     send_request(ConnectionAttempt, getpid(), navy->enemy_pid);
-    my_printf("successfully connected\n\n");
+    my_printf("successfully connected\n");
     display_maps(navy);
+    while (navy->bool_game != 1) {
+        display_maps(navy);
+        attack_sender(navy);
+        attack_sender(navy);
+    }
+}
+
+int help_message()
+{
+    my_putstr("USAGE\n     ./navy [first_player_pid] navy_positions\n"
+              "DESCRIPTION\n     first_player_pid: only for the 2nd player."
+              " pid of the first player.\n     navy_positions: file "
+              "representing the positions of the ships.\n");
+    return 1;
 }
 
 int launch(int ac, char **av)
 {
-    //TODO -h
+    if (ac == 2 && my_strcmp(av[1], "-h") == 0)
+        return help_message();
     if (ac == 2 || ac == 3) {
         navy = malloc(sizeof(navy_t));
         navy->bool_game = 0;
