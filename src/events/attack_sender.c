@@ -15,7 +15,33 @@ int correct_attack(char *str)
     return 0;
 }
 
-int attack_sender()
+int attack_to_int(char *str)
+{
+    char *result = "";
+
+    if (str[0] < 97)
+        result = my_strcat_c(result, (char) (str[0] - 16));
+    else
+        result = my_strcat_c(result, (char) (str[0] - 48));
+    result = my_strcat_c(result, str[1]);
+    return my_atoi(result);
+}
+
+void result_attack(char *str)
+{
+    navy->answer = 0;
+    while (navy->answer == 0)
+        usleep(100);
+    if (navy->answer == 1) {
+        navy->enemy_map[my_atoi(str) - 1][str[0] - 65] = 'x';
+        my_printf("%s: hit\n", str);
+    } else if (navy->answer == 2) {
+        navy->enemy_map[my_atoi(str) - 1][str[0] - 65] = 'o';
+        my_printf("%s: missed\n", str);
+    }
+}
+
+void attack_sender()
 {
     char *line = NULL;
     int bool = 0;
@@ -31,7 +57,8 @@ int attack_sender()
         else
             my_printf("wrong position\n");
     }
-    my_printf("success");
+    bool = attack_to_int(line);
+    send_request(AttackAttempt, bool, navy->enemy_pid);
+    result_attack(line);
     free(line);
-    return (0);
 }

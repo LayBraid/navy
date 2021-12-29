@@ -13,6 +13,8 @@
     #define LETTERS_ATTACK "ABCDEFGH"
     #define NUMBERS_ATTACK "12345678"
 
-int attack_sender();
+void attack_sender();
+
+void attack_receiver();
 
 #endif

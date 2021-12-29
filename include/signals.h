@@ -17,7 +17,7 @@ enum Packets {
     AttackAttempt,
     AttackSuccess,
     AttackFail,
-    TurnFinished,
+    VictoryResult,
     GameFinished
 };
 

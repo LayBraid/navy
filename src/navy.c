@@ -17,7 +17,7 @@ void first_player()
     while (navy->bool_game != 1) {
         display_maps(navy);
         attack_sender(navy);
-        attack_sender(navy);
+        attack_receiver(navy);
     }
 }
 
@@ -26,10 +26,9 @@ void second_player()
     my_printf("my_pid: %d\n", getpid());
     send_request(ConnectionAttempt, getpid(), navy->enemy_pid);
     my_printf("successfully connected\n");
-    display_maps(navy);
     while (navy->bool_game != 1) {
         display_maps(navy);
-        attack_sender(navy);
+        attack_receiver(navy);
         attack_sender(navy);
     }
 }

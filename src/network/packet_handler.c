@@ -14,14 +14,17 @@ void handle_packet(int type, int data)
             navy->enemy_pid = data;
             break;
         case AttackAttempt:
+        case VictoryResult:
+            navy->answer = data;
             break;
         case AttackSuccess:
-            break;
         case AttackFail:
-            break;
-        case TurnFinished:
+            navy->answer_status = type;
+            navy->answer = data;
             break;
         case GameFinished:
+            break;
+        default:
             break;
     }
 }

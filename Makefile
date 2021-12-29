@@ -12,6 +12,7 @@ SRC = src/map/input.c \
 	  src/navy.c \
 	  src/map/utils.c \
 	  src/events/attack_sender.c \
+	  src/events/attack_receiver.c \
 	  src/utils.c \
 	  src/network/signals.c \
 	  src/network/binary_parser.c \

@@ -27,6 +27,8 @@ typedef struct navy_game {
     int enemy_pid;
     int bool_game;
     attack_t *attack;
+    int answer;
+    int answer_status;
 } navy_t;
 
 #endif //NAVY_STRUCT_H
