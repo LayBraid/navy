@@ -51,4 +51,3 @@ int *to_binary(int number)
     }
     return array;
 }
-
