@@ -14,7 +14,7 @@ void victory_receiver()
     while (navy->answer == 3)
         usleep(100);
     if (navy->answer == 1) {
-        display_maps(navy);
+        display_maps();
         my_printf("\nI won\n");
         navy->bool_game = 1;
     }

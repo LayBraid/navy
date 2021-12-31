@@ -29,7 +29,7 @@ void victory_sender()
     if (result > 1000)
         send_request(VictoryResult, 0, navy->enemy_pid);
     else {
-        display_maps(navy);
+        display_maps();
         my_printf("\nEnemy won\n");
         send_request(VictoryResult, 1, navy->enemy_pid);
         navy->bool_game = 1;

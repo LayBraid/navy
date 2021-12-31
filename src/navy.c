@@ -23,7 +23,7 @@ void first_player()
         usleep(100);
     my_printf("enemy connected\n");
     while (navy->bool_game != 1) {
-        display_maps(navy);
+        display_maps();
         attack_sender(navy);
         attack_receiver(navy);
         victory_sender();
@@ -37,7 +37,7 @@ void second_player()
     send_request(ConnectionAttempt, getpid(), navy->enemy_pid);
     my_printf("successfully connected\n");
     while (navy->bool_game != 1) {
-        display_maps(navy);
+        display_maps();
         attack_receiver(navy);
         attack_sender(navy);
         victory_receiver();
