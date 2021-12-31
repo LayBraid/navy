@@ -7,9 +7,9 @@
 
 MAIN = src/main.c
 
-SRC = src/map/input.c \
+SRC = src/navy.c \
+	  src/map/input.c \
 	  src/map/map.c \
-	  src/navy.c \
 	  src/map/utils.c \
 	  src/events/attack_sender.c \
 	  src/events/attack_receiver.c \
@@ -18,19 +18,20 @@ SRC = src/map/input.c \
 	  src/utils.c \
 	  src/network/signals.c \
 	  src/network/binary_parser.c \
-	  src/network/packet_handler.c \
+	  src/network/packet_handler.c
 
 TESTS = tests/test_my_strlen.c
 
-OBJ = $(MAIN:.c=.o) $(SRC:.c=.o)
+OBJ = $(SRC:.c=.o)
 
+MYLIB = -Iinclude -Llib/my -lmy
+CRITERION = -g3 --coverage -lcriterion
 NAME = navy
-SRC_LIB = -Llib -lmy
-CFLAGS += -Wextra -Iinclude -g3
+CFLAGS += -Werror -Wextra -Iinclude
 
 $(NAME): $(OBJ)
 	cd lib/my && make
-	gcc $(OBJ) $(SRC_LIB) -o./$(NAME) -g3
+	gcc $(OBJ) -Llib/my -lmy -o./$(NAME)
 
 all: $(NAME)
 
@@ -38,32 +39,47 @@ fclean:
 	cd lib/my && make fclean
 	make clean
 	rm -f $(NAME)
-	rm -f u
-
-debug:
-	gcc $(OBJ) $(SRC_LIB) -o./$(NAME) -g -Iinclude
+	rm -f $(NAME)_tests
 
 clean:
-	rm -f src/*.o
-	rm -f src/network/*.o
-	rm -f src/map/*.o
-	rm -f src/events/*.o
-	rm -rf *.gcda
-	rm -rf *.gcno
-	rm -rf *.c.gcov
+	rm -f profile.txt
+	rm -f gmon.out
+	find . -type f -name '*.o' -delete
+	find . -type f -name '*.gcda' -delete
+	find . -type f -name '*.gcno' -delete
+	find . -type f -name '*.gcov' -delete
 
 re:
 	make fclean
 	make
 
 tests_run:
-	gcc $(SRC) $(TESTS) $(SRC_LIB) $(CFLAGS) -lcriterion -o./u --coverage
-	./u
+	gcc $(TESTED_SRC) $(TESTS_SRC) $(CRITERION) -o./unit-tests
+	./unit-tests
 
-valgrind:
-	gcc $(SRC) $(SRC_LIB) -o./$(NAME) -g3
-	valgrind ./$(NAME)
+coverage:
+	make tests_run
+	gcovr -e  tests/
 
 gdb:
-	gcc $(SRC) $(SRC_LIB) -o./$(NAME) -g
-	gdb ./$(NAME)
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g
+	gdb --quiet ./$(NAME)
+
+debug:
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g
+
+profile:
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g -p
+	gprof $(NAME) gmon.out > profile.txt
+
+valgrind:
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g3
+	valgrind ./$(NAME)
+
+leak:
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g3
+	valgrind --leak-check=full ./$(NAME)
+
+origins:
+	gcc $(SRC) $(MYLIB) -o./$(NAME) -g3
+	valgrind --track-origins=yes ./$(NAME)
