@@ -8,9 +8,6 @@
 #ifndef NAVY_MAP_H
     #define NAVY_MAP_H
 
-    #include "navy.h"
-    #include "my.h"
-
     #include <sys/stat.h>
     #include <sys/fcntl.h>
 

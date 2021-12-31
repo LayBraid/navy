@@ -5,9 +5,8 @@
 ## No file there , just an epitech header example
 ##
 
-MAIN = src/main.c
-
-SRC = src/navy.c \
+SRC = src/main.c \
+	  src/navy.c \
 	  src/map/input.c \
 	  src/map/map.c \
 	  src/map/utils.c \
@@ -15,7 +14,6 @@ SRC = src/navy.c \
 	  src/events/attack_receiver.c \
 	  src/events/victory_sender.c \
 	  src/events/victory_receiver.c \
-	  src/utils.c \
 	  src/network/signals.c \
 	  src/network/binary_parser.c \
 	  src/network/packet_handler.c

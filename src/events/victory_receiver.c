@@ -5,7 +5,8 @@
 ** No file there , just an epitech header example
 */
 
-#include "../../include/events.h"
+#include "events.h"
+#include "navy.h"
 
 void victory_receiver()
 {

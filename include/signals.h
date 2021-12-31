@@ -10,7 +10,7 @@
 
     #include <signal.h>
     #include <stdlib.h>
-    #include "my.h"
+    #include <unistd.h>
 
 enum Packets {
     ConnectionAttempt,

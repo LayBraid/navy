@@ -11,16 +11,15 @@
     #include "my.h"
     #include "struct.h"
     #include "map.h"
-    #include "utils.h"
     #include "events.h"
     #include "signals.h"
 
     #include <stdio.h>
 
-extern struct navy_game *navy;
+struct navy_game *navy;
 
 int launch(int size, char **args);
 
-void cheat_map();
+void display_maps();
 
 #endif

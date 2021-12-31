@@ -7,6 +7,14 @@
 
 #include "navy.h"
 
+void display_maps()
+{
+    write(1, "\nmy positions:\n", 15);
+    display_map(navy->my_map);
+    write(1, "\nenemy's positions:\n", 20);
+    display_map(navy->enemy_map);
+}
+
 void first_player()
 {
     my_printf("my_pid: %d\n", getpid());

@@ -8,8 +8,6 @@
 #ifndef NAVY_EVENTS_H
     #define NAVY_EVENTS_H
 
-    #include "navy.h"
-
     #define LETTERS_ATTACK "ABCDEFGH"
     #define NUMBERS_ATTACK "12345678"
 

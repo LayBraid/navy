@@ -5,7 +5,8 @@
 ** No file there , just an epitech header example
 */
 
-#include "../../include/map.h"
+#include "map.h"
+#include "navy.h"
 
 void get_in_buffer(char *path)
 {
