@@ -22,3 +22,7 @@ jobs:
     - run: echo "🍏 Status is ${{ job.status }}."
     - name: make
       run: make
+    - name: exec
+      run: ./navy
+    - name: exec -h
+      run: ./navy -h
