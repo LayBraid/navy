@@ -17,9 +17,9 @@
 
     #include <stdio.h>
 
-struct navy_game *navy;
+extern struct navy_game *navy;
 
-int launch(int ac, char **av);
+int launch(int size, char **args);
 
 void cheat_map();
 

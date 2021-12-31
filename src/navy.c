@@ -5,7 +5,7 @@
 ** No file there , just an epitech header example
 */
 
-#include "../include/navy.h"
+#include "navy.h"
 
 void first_player()
 {
@@ -46,22 +46,23 @@ int help_message()
     return 1;
 }
 
-int launch(int ac, char **av)
+int launch(int size, char **args)
 {
-    if (ac == 2 && my_strcmp(av[1], "-h") == 0)
+    if (size == 2 && my_strcmp(args[1], "-h") == 0)
         return help_message();
-    if (ac == 2 || ac == 3) {
+    if (size == 2 || size == 3) {
         navy = malloc(sizeof(navy_t));
         navy->bool_game = 0;
+        navy->enemy_pid = 0;
         navy->attack = malloc(sizeof(attack_t));
         navy->attack->attack = malloc(sizeof(int) * 2);
         handle_signal(SIGUSR1);
         handle_signal(SIGUSR2);
-        fill_map(av[ac - 1]);
-        if (ac == 2) {
+        fill_map(args[size - 1]);
+        if (size == 2) {
             first_player();
         } else {
-            navy->enemy_pid = my_atoi(av[1]);
+            navy->enemy_pid = my_atoi(args[1]);
             second_player();
         }
         return 0;

@@ -5,10 +5,10 @@
 ** No file there , just an epitech header example
 */
 
-#include "../include/navy.h"
+#include "navy.h"
 
-int main(int ac, char**av)
+int main(int size, char **args)
 {
-    launch(ac, av);
+    launch(size, args);
     return 0;
 }
