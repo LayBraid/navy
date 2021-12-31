@@ -21,8 +21,6 @@ jobs:
         ls -R ${{ github.workspace }}
     - run: echo "🍏 Status is ${{ job.status }}."
     - name: make
-      run: make
-    - name: exec
-      run: ./navy
+      run: make re
     - name: exec -h
       run: ./navy -h
