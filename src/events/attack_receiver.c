@@ -7,6 +7,9 @@
 
 #include "events.h"
 #include "navy.h"
+#include "struct.h"
+#include "signals.h"
+#include "my.h"
 
 char *int_to_attack(int nb)
 {
@@ -17,7 +20,7 @@ char *int_to_attack(int nb)
     return result;
 }
 
-void result_receiver(char *str)
+void result_receiver(navy_t *navy, char *str)
 {
     if (navy->my_map[my_atoi(str) - 1][str[0] - 65] != '.' &&
         navy->my_map[my_atoi(str) - 1][str[0] - 65] != 'o') {
@@ -31,14 +34,14 @@ void result_receiver(char *str)
     }
 }
 
-void attack_receiver()
+void attack_receiver(navy_t *navy)
 {
     char *result;
 
-    navy->answer = 0;
+    answer = 0;
     my_printf("\nwaiting for enemy's attack...\n");
-    while (navy->answer == 0)
+    while (answer == 0)
         usleep(100);
-    result = int_to_attack(navy->answer);
-    result_receiver(result);
+    result = int_to_attack(answer);
+    result_receiver(navy, result);
 }

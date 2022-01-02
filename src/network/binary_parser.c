@@ -22,7 +22,7 @@ int signal_to_binary(int signal_id)
 int from_binary(int const *binary_value)
 {
     static int numbers[16] = {32768, 16384, 8192, 4096, 2048, 1024, 512, 256,
-                              128, 64, 32, 16, 8, 4, 2, 1};
+    128, 64, 32, 16, 8, 4, 2, 1};
     int value = 0;
 
     for (int index = 0; index < 16; index++)
@@ -34,7 +34,7 @@ int from_binary(int const *binary_value)
 int *to_binary(int number)
 {
     static int numbers[16] = {32768, 16384, 8192, 4096, 2048, 1024, 512, 256,
-                              128, 64, 32, 16, 8, 4, 2, 1};
+    128, 64, 32, 16, 8, 4, 2, 1};
     int *array = malloc(sizeof(int) * 16);
 
     if (number < 0 || number > (2 * numbers[0] - 1) || array == NULL) {

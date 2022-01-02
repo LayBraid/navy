@@ -11,12 +11,14 @@
     #define LETTERS_ATTACK "ABCDEFGH"
     #define NUMBERS_ATTACK "12345678"
 
-void attack_sender();
+    #include "struct.h"
 
-void attack_receiver();
+void attack_sender(navy_t *navy);
 
-void victory_sender();
+void attack_receiver(navy_t *navy);
 
-void victory_receiver();
+void victory_sender(navy_t *navy);
+
+void victory_receiver(navy_t *navy);
 
 #endif

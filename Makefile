@@ -10,6 +10,7 @@ SRC = src/main.c \
 	  src/map/input.c \
 	  src/map/map.c \
 	  src/map/utils.c \
+	  src/map/utils_2.c \
 	  src/events/attack_sender.c \
 	  src/events/attack_receiver.c \
 	  src/events/victory_sender.c \
@@ -18,7 +19,9 @@ SRC = src/main.c \
 	  src/network/binary_parser.c \
 	  src/network/packet_handler.c
 
-TESTS = tests/test_my_strlen.c
+SRC_TST = src/my_test.c
+
+TESTS = tests/test_my_test.c
 
 OBJ = $(SRC:.c=.o)
 
@@ -37,7 +40,7 @@ fclean:
 	cd lib/my && make fclean
 	make clean
 	rm -f $(NAME)
-	rm -f $(NAME)_tests
+	rm -f u
 
 clean:
 	rm -f profile.txt
@@ -52,8 +55,8 @@ re:
 	make
 
 tests_run:
-	gcc $(TESTED_SRC) $(TESTS_SRC) $(CRITERION) -o./unit-tests
-	./unit-tests
+	gcc $(SRC_TST) $(TESTS) $(CFLAGS) -lcriterion -o./u --coverage
+	./u
 
 coverage:
 	make tests_run

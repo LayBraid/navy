@@ -7,8 +7,9 @@
 
 #include "map.h"
 #include "navy.h"
+#include "my.h"
 
-void malloc_map()
+void malloc_map(navy_t *navy)
 {
     navy->my_map = malloc(sizeof(char *) * 9);
     for (int i = 0; i < 9; i++)
@@ -33,10 +34,10 @@ void init_map(char **map)
             map[i][j] = value_map(i, j);
 }
 
-void fill_map(char *path)
+void fill_map(navy_t *navy, char *path)
 {
-    input_map(path);
-    malloc_map();
+    input_map(navy, path);
+    malloc_map(navy);
     init_map(navy->my_map);
     init_map(navy->enemy_map);
     browse_vectors(navy);

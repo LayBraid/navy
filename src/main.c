@@ -6,6 +6,7 @@
 */
 
 #include "navy.h"
+#include "my.h"
 
 void put_error(char const *message)
 {
@@ -24,7 +25,7 @@ void print_usage(int size)
 
 int main(int size, char **args)
 {
-    if(size == 2 || size == 3) {
+    if (size == 2 || size == 3) {
         return launch(size, args);
     } else {
         print_usage(size - 1);

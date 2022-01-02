@@ -7,8 +7,11 @@
 
 #include "events.h"
 #include "navy.h"
+#include "struct.h"
+#include "signals.h"
+#include "my.h"
 
-int conditions_victory(int i, int j)
+int conditions_victory(navy_t *navy, int i, int j)
 {
     if (navy->my_map[i][j] != '.' &&
         navy->my_map[i][j] != 'x' &&
@@ -17,19 +20,17 @@ int conditions_victory(int i, int j)
     return 0;
 }
 
-void victory_sender()
+void victory_sender(navy_t *navy)
 {
     int result = 0;
 
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            result += conditions_victory(i, j);
-        }
-    }
+    for (int i = 0; i < 8; i++)
+        for (int j = 0; j < 8; j++)
+            result += conditions_victory(navy, i, j);
     if (result > 1000)
         send_request(VictoryResult, 0, navy->enemy_pid);
     else {
-        display_maps();
+        display_maps(navy);
         my_printf("\nEnemy won\n");
         send_request(VictoryResult, 1, navy->enemy_pid);
         navy->bool_game = 1;

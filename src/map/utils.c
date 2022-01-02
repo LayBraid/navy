@@ -6,7 +6,7 @@
 */
 
 #include "map.h"
-#include "navy.h"
+#include "my.h"
 
 void exe_vector(const int *vector, char **map)
 {
@@ -19,25 +19,26 @@ void exe_vector(const int *vector, char **map)
         map[vector[1]][vector[0]] = (char) (vector[6] + '0');
 }
 
-void browse_vectors()
+void browse_vectors(navy_t *navy)
 {
-    for (int i = 0; i < navy->map->buffer_lines; i++) {
+    for (int i = 0; i < navy->map->buffer_lines; i++)
         exe_vector(navy->map->vectors[i], navy->my_map);
-    }
 }
 
-void display_map(char **map)
+int line_in_buffer(char *buffer)
 {
-    write(1, " |A B C D E F G H\n", 18);
-    write(1, "-+---------------\n", 18);
-    for (int i = 0; i < 8; i++) {
-        my_printf("%d|", i + 1);
-        for (int j = 0; j < 8; j++) {
-            if (j != 7)
-                my_printf("%c ", map[i][j]);
-            else
-                my_printf("%c", map[i][j]);
-        }
-        write(1, "\n", 1);
-    }
+    int nb = 1;
+
+    for (int i = 0; i < my_strlen(buffer); i++)
+        if (buffer[i] == '\n')
+            nb++;
+    return nb;
+}
+
+int char_in_line(char *buffer)
+{
+    for (int i = 0; i < my_strlen(buffer); i++)
+        if (buffer[i] == '\n')
+            return i;
+    return 0;
 }

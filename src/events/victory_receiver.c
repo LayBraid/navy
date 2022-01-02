@@ -7,14 +7,16 @@
 
 #include "events.h"
 #include "navy.h"
+#include "struct.h"
+#include "my.h"
 
-void victory_receiver()
+void victory_receiver(navy_t *navy)
 {
-    navy->answer = 3;
-    while (navy->answer == 3)
+    answer = 3;
+    while (answer == 3)
         usleep(100);
-    if (navy->answer == 1) {
-        display_maps();
+    if (answer == 1) {
+        display_maps(navy);
         my_printf("\nI won\n");
         navy->bool_game = 1;
     }

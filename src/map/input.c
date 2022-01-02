@@ -6,9 +6,9 @@
 */
 
 #include "map.h"
-#include "navy.h"
+#include "my.h"
 
-void get_in_buffer(char *path)
+void get_in_buffer(navy_t *navy, char *path)
 {
     int fd;
     struct stat buf;
@@ -23,25 +23,7 @@ void get_in_buffer(char *path)
     close(fd);
 }
 
-int line_in_buffer(char *buffer) //TODO Mettre dans la lib
-{
-    int nb = 1;
-
-    for (int i = 0; i < my_strlen(buffer); i++)
-        if (buffer[i] == '\n')
-            nb++;
-    return nb;
-}
-
-int char_in_line(char *buffer) //TODO Mettre dans la lib
-{
-    for (int i = 0; i < my_strlen(buffer); i++)
-        if (buffer[i] == '\n')
-            return i;
-    return 0;
-}
-
-void line_by_line()
+void line_by_line(navy_t *navy)
 {
     navy->map->buffer_lines = line_in_buffer(navy->map->buffer);
     navy->map->length_line = char_in_line(navy->map->buffer);
@@ -59,7 +41,7 @@ void line_by_line()
     navy->map->lines[navy->map->buffer_lines] = "\0";
 }
 
-void init_vectors()
+void init_vectors(navy_t *navy)
 {
     navy->map->vectors = malloc(sizeof(int *) * navy->map->buffer_lines);
     for (int i = 0; i < navy->map->buffer_lines; i++) {
@@ -76,11 +58,11 @@ void init_vectors()
     }
 }
 
-int input_map(char *path)
+int input_map(navy_t *navy, char *path)
 {
     navy->map = malloc(sizeof(map_t));
-    get_in_buffer(path);
-    line_by_line();
-    init_vectors();
+    get_in_buffer(navy, path);
+    line_by_line(navy);
+    init_vectors(navy);
     return (0);
 }

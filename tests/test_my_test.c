@@ -6,9 +6,15 @@
 */
 
 #include "criterion/criterion.h"
-#include "../include/my.h"
 
-Test(my_strlen, my_strlen)
+int my_test(int i);
+
+Test(my_test, my_test_zero)
 {
-    cr_assert_eq(my_strlen("test"), 4);
+    cr_assert_eq(my_test(0), 0);
+}
+
+Test(my_test, my_test_one)
+{
+    cr_assert_eq(my_test(1), 1);
 }

@@ -31,4 +31,4 @@ typedef struct navy_game {
     int answer_status;
 } navy_t;
 
-#endif //NAVY_STRUCT_H
+#endif

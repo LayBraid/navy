@@ -10,13 +10,18 @@
 
     #include <sys/stat.h>
     #include <sys/fcntl.h>
+    #include "struct.h"
 
-int input_map(char *path);
+int input_map(navy_t *navy, char *path);
 
-void fill_map(char *path);
+void fill_map(navy_t *navy, char *path);
 
 void display_map(char **map);
 
-void browse_vectors();
+void browse_vectors(navy_t *navy);
+
+int line_in_buffer(char *buffer);
+
+int char_in_line(char *buffer);
 
 #endif

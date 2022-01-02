@@ -8,18 +8,13 @@
 #ifndef NAVY_NAVY_H
     #define NAVY_NAVY_H
 
-    #include "my.h"
-    #include "struct.h"
-    #include "map.h"
-    #include "events.h"
-    #include "signals.h"
-
     #include <stdio.h>
+    #include "struct.h"
 
-struct navy_game *navy;
+extern int answer;
 
 int launch(int size, char **args);
 
-void display_maps();
+void display_maps(navy_t *navy);
 
 #endif

@@ -7,10 +7,12 @@
 
 #include "events.h"
 #include "navy.h"
+#include "struct.h"
+#include "signals.h"
+#include "my.h"
 
 int correct_attack(char *str)
 {
-
     if (my_str_contains_c(str[0], LETTERS_ATTACK) &&
     my_str_contains_c(str[1], NUMBERS_ATTACK))
         return 1;
@@ -29,21 +31,21 @@ int attack_to_int(char *str)
     return my_atoi(result);
 }
 
-void result_attack(char *str)
+void result_attack(navy_t *navy, char *str)
 {
-    navy->answer = 0;
-    while (navy->answer == 0)
+    answer = 0;
+    while (answer == 0)
         usleep(100);
-    if (navy->answer == 1) {
+    if (answer == 1) {
         navy->enemy_map[my_atoi(str) - 1][str[0] - 65] = 'x';
         my_printf("%s: hit\n", str);
-    } else if (navy->answer == 2) {
+    } else if (answer == 2) {
         navy->enemy_map[my_atoi(str) - 1][str[0] - 65] = 'o';
         my_printf("%s: missed\n", str);
     }
 }
 
-void attack_sender()
+void attack_sender(navy_t *navy)
 {
     char *line = NULL;
     int bool = 0;
@@ -61,6 +63,6 @@ void attack_sender()
     }
     bool = attack_to_int(line);
     send_request(AttackAttempt, bool, navy->enemy_pid);
-    result_attack(line);
+    result_attack(navy, line);
     free(line);
 }
