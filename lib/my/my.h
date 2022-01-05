@@ -6,16 +6,16 @@
 */
 
 #ifndef MY_LS_MY_H
-#define MY_LS_MY_H
+    #define MY_LS_MY_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stddef.h>
-#include <stdarg.h>
+    #include <unistd.h>
+    #include <stdlib.h>
+    #include <stddef.h>
+    #include <stdarg.h>
 
-#define PRINTF_FLAGS "pcBbEeXlxFfSsdiuo0123456789#+-. %"
-#define PRINTF_FLAGS_INT "diu"
-#define PRINTF_FLAGS_NO_END " .#-+0123456789%"
+    #define PRINTF_FLAGS "pcBbEeXlxFfSsdiuo0123456789#+-. %"
+    #define PRINTF_FLAGS_INT "diu"
+    #define PRINTF_FLAGS_NO_END " .#-+0123456789%"
 
 typedef struct type_flags {
     char flag;

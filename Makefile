@@ -60,7 +60,7 @@ tests_run:
 
 coverage:
 	make tests_run
-	gcovr -e  tests/
+	gcovr -e tests/
 
 gdb:
 	gcc $(SRC) $(MYLIB) -o./$(NAME) -g

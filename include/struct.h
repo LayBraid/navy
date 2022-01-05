@@ -6,7 +6,7 @@
 */
 
 #ifndef NAVY_STRUCT_H
-#define NAVY_STRUCT_H
+    #define NAVY_STRUCT_H
 
 typedef struct map_struct {
     int **vectors;
