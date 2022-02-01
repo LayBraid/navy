@@ -38,7 +38,6 @@ void first_player(navy *navy)
         victory_sender(navy);
         victory_receiver(navy);
     }
-    free(navy);
 }
 
 void second_player(navy *navy)
@@ -53,7 +52,6 @@ void second_player(navy *navy)
         victory_receiver(navy);
         victory_sender(navy);
     }
-    free(navy);
 }
 
 int launch(int size, char **args)
@@ -74,5 +72,5 @@ int launch(int size, char **args)
         game->enemy_pid = my_atoi(args[1]);
         second_player(game);
     }
-    return 0;
+    return (game->is_winner ? 0 : 1);
 }

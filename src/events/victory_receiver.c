@@ -19,5 +19,6 @@ void victory_receiver(navy *navy)
         display_maps(navy);
         my_printf("\nI won\n");
         navy->bool_game = 1;
+        navy->is_winner = TRUE;
     }
 }

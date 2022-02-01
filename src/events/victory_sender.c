@@ -34,5 +34,6 @@ void victory_sender(navy *navy)
         my_printf("\nEnemy won\n");
         send_request(VictoryResult, 1, navy->enemy_pid);
         navy->bool_game = 1;
+        navy->is_winner = FALSE;
     }
 }

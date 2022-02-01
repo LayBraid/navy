@@ -31,6 +31,7 @@ typedef struct navy_type {
     char **enemy_map;
     int enemy_pid;
     int bool_game;
+    boolean is_winner;
 } navy;
 
 #endif
