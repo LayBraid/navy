@@ -20,7 +20,7 @@ char *int_to_attack(int nb)
     return result;
 }
 
-void result_receiver(navy_t *navy, char *str)
+void result_receiver(navy *navy, char *str)
 {
     if (navy->my_map[my_atoi(str) - 1][str[0] - 65] != '.' &&
         navy->my_map[my_atoi(str) - 1][str[0] - 65] != 'o') {
@@ -34,7 +34,7 @@ void result_receiver(navy_t *navy, char *str)
     }
 }
 
-void attack_receiver(navy_t *navy)
+void attack_receiver(navy *navy)
 {
     char *result;
 

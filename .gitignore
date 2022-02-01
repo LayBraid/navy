@@ -1,9 +1,9 @@
 *.a
 *.o
 *.out
-*.pdf
 pos1
 pos2
+vgcore.*
 
 .idea/
 navy

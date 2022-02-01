@@ -7,8 +7,9 @@
 
 SRC = src/main.c \
 	  src/navy.c \
-	  src/map/input.c \
 	  src/map/map.c \
+	  src/map/parser.c \
+	  src/map/reader.c \
 	  src/map/utils.c \
 	  src/map/utils_2.c \
 	  src/events/attack_sender.c \

@@ -10,7 +10,7 @@
 #include "struct.h"
 #include "my.h"
 
-void victory_receiver(navy_t *navy)
+void victory_receiver(navy *navy)
 {
     answer = 3;
     while (answer == 3)

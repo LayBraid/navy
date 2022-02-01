@@ -23,9 +23,21 @@ void print_usage(int size)
     free(value);
 }
 
+void send_help(void)
+{
+    my_putstr("USAGE\n     ./navy [first_player_pid] navy_positions\n"
+              "DESCRIPTION\n     first_player_pid: only for the 2nd player."
+              " pid of the first player.\n     navy_positions: file "
+              "representing the positions of the ships.\n");
+}
+
 int main(int size, char **args)
 {
     if (size == 2 || size == 3) {
+        if (size == 2 && my_strcmp(args[1], "-h") == 0) {
+            send_help();
+            return 0;
+        }
         return launch(size, args);
     } else {
         print_usage(size - 1);

@@ -9,36 +9,54 @@
 #include "navy.h"
 #include "my.h"
 
-void malloc_map(navy_t *navy)
+void malloc_maps(navy *navy)
 {
     navy->my_map = malloc(sizeof(char *) * 9);
-    for (int i = 0; i < 9; i++)
-        navy->my_map[i] = malloc(sizeof(char) * 9);
+    for (int index = 0; index < 9; index++) {
+        navy->my_map[index] = malloc(sizeof(char) * 9);
+        navy->my_map[index][8] = '\0';
+    }
+    navy->my_map[8] = NULL;
     navy->enemy_map = malloc(sizeof(char *) * 9);
-    for (int i = 0; i < 9; i++)
-        navy->enemy_map[i] = malloc(sizeof(char) * 9);
+    for (int index = 0; index < 9; index++) {
+        navy->enemy_map[index] = malloc(sizeof(char) * 9);
+        navy->enemy_map[index][8] = '\0';
+    }
+    navy->enemy_map[8] = NULL;
 }
 
-char value_map(int i, int j)
+void initialize_maps(const navy *navy)
 {
-    if (i == 8 || j == 8)
-        return '\0';
-    else
-        return '.';
+    for (int row = 0; row < 8; row++) {
+        for (int line = 0; line < 8; line++) {
+            navy->my_map[row][line] = '.';
+            navy->enemy_map[row][line] = '.';
+        }
+    }
 }
 
-void init_map(char **map)
+boolean load_boats(navy *navy, conststr path)
 {
-    for (int i = 0; i < 9; i++)
-        for (int j = 0; j < 9; j++)
-            map[i][j] = value_map(i, j);
+    conststr raw_map = load_raw_map(path);
+    char **raw_boats = split_lines(raw_map);
+    int boats_count = count_lines(raw_map);
+
+    navy->map = malloc(sizeof(map));
+    navy->map->boats_count = boats_count;
+    navy->map->boats = malloc(sizeof(boat *) * (boats_count + 1));
+    navy->map->boats[boats_count] = NULL;
+    for (int index = 0; index < boats_count; index++) {
+        if (is_valid(raw_boats[index]))
+            navy->map->boats[index] = load_boat(raw_boats[index]);
+        else
+            return FALSE;
+    }
+    return TRUE;
 }
 
-void fill_map(navy_t *navy, char *path)
+void fill_map(navy *navy)
 {
-    input_map(navy, path);
-    malloc_map(navy);
-    init_map(navy->my_map);
-    init_map(navy->enemy_map);
-    browse_vectors(navy);
+    malloc_maps(navy);
+    initialize_maps(navy);
+    update_map(navy);
 }

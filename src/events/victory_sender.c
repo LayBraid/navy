@@ -11,7 +11,7 @@
 #include "signals.h"
 #include "my.h"
 
-int conditions_victory(navy_t *navy, int i, int j)
+int conditions_victory(navy *navy, int i, int j)
 {
     if (navy->my_map[i][j] != '.' &&
         navy->my_map[i][j] != 'x' &&
@@ -20,7 +20,7 @@ int conditions_victory(navy_t *navy, int i, int j)
     return 0;
 }
 
-void victory_sender(navy_t *navy)
+void victory_sender(navy *navy)
 {
     int result = 0;
 

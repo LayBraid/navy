@@ -11,15 +11,16 @@
 #include "signals.h"
 #include "my.h"
 
-int correct_attack(char *str)
+boolean is_valid_attack(conststr attack_coordinate)
 {
-    if (my_str_contains_c(str[0], LETTERS_ATTACK) &&
-    my_str_contains_c(str[1], NUMBERS_ATTACK))
-        return 1;
-    return 0;
+    if (attack_coordinate[0] < 'A' || attack_coordinate[0] > 'H')
+        return FALSE;
+    if (attack_coordinate[1] < '1' || attack_coordinate[1] > '8')
+        return FALSE;
+    return TRUE;
 }
 
-int attack_to_int(char *str)
+int attack_to_int(conststr str)
 {
     char *result = "";
 
@@ -31,7 +32,7 @@ int attack_to_int(char *str)
     return my_atoi(result);
 }
 
-void result_attack(navy_t *navy, char *str)
+void result_attack(navy *navy, char *str)
 {
     answer = 0;
     while (answer == 0)
@@ -45,24 +46,24 @@ void result_attack(navy_t *navy, char *str)
     }
 }
 
-void attack_sender(navy_t *navy)
+void attack_sender(navy *navy)
 {
     char *line = NULL;
-    int bool = 0;
-    size_t len = 0;
-    ssize_t lineSize = 0;
-    my_printf("\n");
-    while (bool == 0) {
-        my_printf("attack: ");
-        lineSize = getline(&line, &len, stdin);
+    int is_valid = 0;
+    size_t length = 0;
+
+    my_putchar('\n');
+    while (!is_valid) {
+        my_putstr("attack: ");
+        getline(&line, &length, stdin);
         line = my_strncpy(line, line, 2);
-        if (correct_attack(line) == 1)
-            bool = 1;
+        if (is_valid_attack(line))
+            is_valid = TRUE;
         else
-            my_printf("wrong position\n");
+            my_putstr("wrong position\n");
     }
-    bool = attack_to_int(line);
-    send_request(AttackAttempt, bool, navy->enemy_pid);
+    is_valid = attack_to_int(line);
+    send_request(AttackAttempt, is_valid, navy->enemy_pid);
     result_attack(navy, line);
     free(line);
 }

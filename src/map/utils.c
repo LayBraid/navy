@@ -6,39 +6,32 @@
 */
 
 #include "map.h"
-#include "my.h"
 
-void exe_vector(const int *vector, char **map)
+boolean is_part(int row, int column, const int *coord)
 {
-    for (int i = 0; i < vector[4] + 1; i++) {
-        map[vector[1] - 1][vector[0] + i] = (char) (vector[6] + '0');
-        for (int j = 0; j < vector[5] + 1; j++)
-            map[vector[1] + j - 1][vector[0] + i] = (char) (vector[6] + '0');
+    if (row >= coord[0] && row <= coord[2])
+        if (column >= coord[1] && column <= coord[3])
+            return TRUE;
+    return FALSE;
+}
+
+void update_boat(const navy *navy, const boat *boat, const int *coord)
+{
+    for (int row = 0; row < 8; row++) {
+        for (int column = 0; column < 8; column++) {
+            if (is_part(row, column, coord))
+                navy->my_map[row][column] = (char) ('0' + boat->length);
+        }
     }
-    for (int j = 0; j < vector[5]; j++)
-        map[vector[1]][vector[0]] = (char) (vector[6] + '0');
 }
 
-void browse_vectors(navy_t *navy)
+void update_map(const navy *navy)
 {
-    for (int i = 0; i < navy->map->buffer_lines; i++)
-        exe_vector(navy->map->vectors[i], navy->my_map);
-}
+    int boats_count = navy->map->boats_count;
+    for (int index = 0; index < boats_count; index++) {
+        const boat *boat = navy->map->boats[index];
+        const int *coords = boat->coordinates;
 
-int line_in_buffer(char *buffer)
-{
-    int nb = 1;
-
-    for (int i = 0; i < my_strlen(buffer); i++)
-        if (buffer[i] == '\n')
-            nb++;
-    return nb;
-}
-
-int char_in_line(char *buffer)
-{
-    for (int i = 0; i < my_strlen(buffer); i++)
-        if (buffer[i] == '\n')
-            return i;
-    return 0;
+        update_boat(navy, boat, coords);
+    }
 }

@@ -13,12 +13,12 @@
 
     #include "struct.h"
 
-void attack_sender(navy_t *navy);
+void attack_sender(navy *navy);
 
-void attack_receiver(navy_t *navy);
+void attack_receiver(navy *navy);
 
-void victory_sender(navy_t *navy);
+void victory_sender(navy *navy);
 
-void victory_receiver(navy_t *navy);
+void victory_receiver(navy *navy);
 
 #endif

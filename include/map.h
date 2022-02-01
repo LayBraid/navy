@@ -7,21 +7,34 @@
 
 #ifndef NAVY_MAP_H
     #define NAVY_MAP_H
-
     #include <sys/stat.h>
     #include <sys/fcntl.h>
     #include "struct.h"
 
-int input_map(navy_t *navy, char *path);
-
-void fill_map(navy_t *navy, char *path);
-
 void display_map(char **map);
 
-void browse_vectors(navy_t *navy);
+// == utils.c ==
 
-int line_in_buffer(char *buffer);
+void update_map(const navy *navy);
 
-int char_in_line(char *buffer);
+// == navy.c ==
+
+boolean load_boats(navy *navy, conststr path);
+
+void fill_map(navy *navy);
+
+// == parser.c ==
+
+boolean is_valid(conststr line);
+
+boat *load_boat(conststr line);
+
+// == reader.c ==
+
+char *load_raw_map(conststr path);
+
+int count_lines(conststr input);
+
+char **split_lines(conststr input);
 
 #endif

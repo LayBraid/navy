@@ -6,29 +6,31 @@
 */
 
 #ifndef NAVY_STRUCT_H
-    #define NAVY_STRUCT_H
+#define NAVY_STRUCT_H
 
-typedef struct map_struct {
-    int **vectors;
-    char *buffer;
-    char **lines;
-    int buffer_lines;
-    int length_line;
-} map_t;
+typedef enum boolean_enum {
+    FALSE = 0,
+    TRUE
+} boolean;
 
-typedef struct attack_struct {
-    int *attack;
-} attack_t;
+typedef char const *conststr;
 
-typedef struct navy_game {
-    map_t *map;
+typedef struct boat_type {
+    int length;
+    int *coordinates;
+} boat;
+
+typedef struct map_type {
+    int boats_count;
+    boat **boats;
+} map;
+
+typedef struct navy_type {
+    map *map;
     char **my_map;
     char **enemy_map;
     int enemy_pid;
     int bool_game;
-    attack_t *attack;
-    int answer;
-    int answer_status;
-} navy_t;
+} navy;
 
 #endif
