@@ -15,6 +15,6 @@ extern int answer;
 
 int launch(int size, char **args);
 
-void display_maps(navy *navy);
+void display_maps(const navy *navy);
 
 #endif
