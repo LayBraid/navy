@@ -14,7 +14,7 @@
 
 int answer;
 
-void display_maps(navy *navy)
+void display_maps(const navy *navy)
 {
     write(1, "\nmy positions:\n", 15);
     display_map(navy->my_map);

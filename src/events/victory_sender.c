@@ -11,7 +11,7 @@
 #include "signals.h"
 #include "my.h"
 
-int conditions_victory(navy *navy, int i, int j)
+int conditions_victory(const navy *navy, int i, int j)
 {
     if (navy->my_map[i][j] != '.' &&
         navy->my_map[i][j] != 'x' &&
@@ -24,9 +24,9 @@ void victory_sender(navy *navy)
 {
     int result = 0;
 
-    for (int i = 0; i < 8; i++)
-        for (int j = 0; j < 8; j++)
-            result += conditions_victory(navy, i, j);
+    for (int row = 0; row < 8; row++)
+        for (int column = 0; column < 8; column++)
+            result += conditions_victory(navy, row, column);
     if (result > 1000)
         send_request(VictoryResult, 0, navy->enemy_pid);
     else {

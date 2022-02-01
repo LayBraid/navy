@@ -33,6 +33,7 @@ int from_binary(int const *binary_value);
 int *to_binary(int number);
 
 //== packet_handler.c ==
+
 void handle_packet(int type, int data);
 
 #endif

@@ -32,7 +32,7 @@ int attack_to_int(conststr str)
     return my_atoi(result);
 }
 
-void result_attack(navy *navy, char *str)
+void result_attack(const navy *navy, char *str)
 {
     answer = 0;
     while (answer == 0)
@@ -46,7 +46,7 @@ void result_attack(navy *navy, char *str)
     }
 }
 
-void attack_sender(navy *navy)
+void attack_sender(const navy *navy)
 {
     char *line = NULL;
     int is_valid = 0;

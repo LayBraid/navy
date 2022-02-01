@@ -6,6 +6,7 @@
 */
 
 #include "map.h"
+#include "my.h"
 
 boolean is_part(int row, int column, const int *coord)
 {
@@ -33,5 +34,24 @@ void update_map(const navy *navy)
         const int *coords = boat->coordinates;
 
         update_boat(navy, boat, coords);
+    }
+}
+
+void display_next(char **map, int row, int column)
+{
+    my_putchar(map[row][column]);
+    if (column != 7)
+        my_putchar(' ');
+}
+
+void display_map(char **map)
+{
+    my_putstr(" |A B C D E F G H\n");
+    my_putstr("-+---------------\n");
+    for (int row = 0; row < 8; row++) {
+        my_printf("%d|", row + 1);
+        for (int column = 0; column < 8; column++)
+            display_next(map, row, column);
+        my_putchar('\n');
     }
 }

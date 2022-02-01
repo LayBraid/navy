@@ -20,7 +20,7 @@ char *int_to_attack(int nb)
     return result;
 }
 
-void result_receiver(navy *navy, char *str)
+void result_receiver(const navy *navy, char *str)
 {
     if (navy->my_map[my_atoi(str) - 1][str[0] - 65] != '.' &&
         navy->my_map[my_atoi(str) - 1][str[0] - 65] != 'o') {
@@ -34,12 +34,12 @@ void result_receiver(navy *navy, char *str)
     }
 }
 
-void attack_receiver(navy *navy)
+void attack_receiver(const navy *navy)
 {
     char *result;
 
     answer = 0;
-    my_printf("\nwaiting for enemy's attack...\n");
+    my_putstr("\nwaiting for enemy's attack...\n");
     while (answer == 0)
         usleep(100);
     result = int_to_attack(answer);

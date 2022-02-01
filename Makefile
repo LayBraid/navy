@@ -11,7 +11,6 @@ SRC = src/main.c \
 	  src/map/parser.c \
 	  src/map/reader.c \
 	  src/map/utils.c \
-	  src/map/utils_2.c \
 	  src/events/attack_sender.c \
 	  src/events/attack_receiver.c \
 	  src/events/victory_sender.c \
